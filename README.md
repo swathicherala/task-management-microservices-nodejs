@@ -72,5 +72,4 @@ The system is divided into the following microservices:
 Clone the repository:
 
 ```bash
-git clone <your-repository-url>
-cd <project-folder>
+git clone https://github.com/swathicherala/task-management-microservices-nodejs.git
