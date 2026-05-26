@@ -27,7 +27,7 @@ The system is divided into the following microservices:
 ### 3. Notification Service
 - Consumes messages/events from RabbitMQ
 - Processes task creation notifications asynchronously
-- Currently implemented as a dummy notification service (console/log-based)
+- Currently implemented email notification service using nodemailer package
 - Can be extended to support **Email, SMS, Push, or In-App notifications**
 - Runs on **Port 5002**
 
