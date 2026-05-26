@@ -38,6 +38,8 @@ services:
     container_name: notification-service
     ports:
       - "5002:5002"
+    env_file:
+      - ./notification-service/.env
     depends_on:
       - mongo
       - rabbitmq

@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
+const axios = require('axios')
 const port = 5001
 const bodyParser = require('body-parser')
 const amqp = require('amqplib')
@@ -56,10 +57,22 @@ async function connectRabbitMQWithRetry(retries=5, delay=3000){
 app.post('/tasks',async(req,res)=>{
     const {title, description, userId} = req.body
     try {
+        const userResponse = await axios.get(
+            `http://user-service:5000/users/${userId}`
+        )
+
+        const user = userResponse.data
+
+        if (!user) {
+            return res.status(404).json({
+                error: 'User not found'
+            })
+        }
+
         const task = new Task({title, description, userId})
         await task.save()
 
-        const message = { taskId: task._id, userId, title }
+        const message = { taskId: task._id, userId, title, email: user.email }
 
         if(!channel){
             return res.status(503).json({error: "Rabbitmq not connected"})
