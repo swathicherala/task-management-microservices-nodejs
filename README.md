@@ -4,7 +4,7 @@ A backend **Task Management System** built using **Node.js Microservices Archite
 
 ## Overview
 
-This project consists of multiple independent microservices that communicate asynchronously through **RabbitMQ**. The system allows users to create accounts and manage tasks, while a separate notification service handles task-related notifications.
+This project consists of multiple independent microservices that communicate asynchronously through **RabbitMQ**. The system allows users to create accounts and manage tasks, while a separate notification service handles task-related notifications through email.
 
 The application is fully containerized using **Docker** and orchestrated using **Docker Compose**, including **MongoDB** and **RabbitMQ** containers.
 
